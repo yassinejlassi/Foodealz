@@ -32,7 +32,7 @@ export default class Verif extends Component {
                   code:num
                })
                .then(res => alert('should go to home page'), )
-             .catch(err =>  Alert.alert(title, message, buttons));
+             .catch(err =>  alert('hgjkl'));
              }
           }
          
@@ -96,6 +96,8 @@ envoyer un code de vérification, veuillez le saisir ici !</Text>
        <Button style={styles.button} mode="contained" onPress={this.onVerif}>
    Vérifier code
   </Button>
+  <Link to='/'><Text>back</Text></Link>
+
       
                             </View>
         )

@@ -11,7 +11,7 @@ import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-nativ
 
 
 
-export default class Signup extends Component {
+export default class Init extends Component {
   constructor(props) {  
     super(props);  
     this.state = {
@@ -21,34 +21,11 @@ export default class Signup extends Component {
       
   };  }
   
-  controle=()=>{
-    const { mail,password } = this.state;
-    const {history}=this.props
-    let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    if (this.state.mail==""||this.state.password==""){
-        alert("nopppppe")
-      }
-      else if (this.state.password.length<8){
-        alert("password too short")
-      }
-      else if (reg.test(this.state.mail) === false){
-        alert('wrong  format')
-      }
-      else {
-        axios
-      .post("http://192.168.1.155:5000/auth/login",{
-        
-        mail:mail,
-        password:password,
-      })
-      .then(res =>{if (res.data.active != "active"){history.push('/verif')}
-    else {alert("should go to home page")}} 
-        )
-    .catch(err => alert(err));
-      }
-      
-  }
   
+  test=()=>{
+    const {history}=this.props;
+    history.push("/signup")
+  }
   
     _handleURL(event) {
       console.log(event.url);
@@ -93,25 +70,17 @@ export default class Signup extends Component {
                 style={styles.logoStyle}
                
               />
-            <View style={styles.form} >
-              
-         <TextInput style={styles.TextInput}  
-         
-                    placeholder="Email"  
-                    underlineColorAndroid = "#0095ff"
-                    onChangeText={(mail) => this.setState({mail})}
-                    />  
-  
-         <TextInput  style={styles.TextInput}  
-                    placeholder="Password"  
-                    underlineColorAndroid = "#0095ff"
-                    secureTextEntry={true}
-                    onChangeText={(password) => this.setState({password})}/>  
-                    <View style={styles.pwoublié} ><Link to="/Forget"><Text style={styles.textpw}>Mot de passe oublié ?</Text></Link></View>
-            </View>
+
+              <View>
+                  <Text style={styles.title}>Economisez</Text>
+                  <Text style={styles.title}>Sauvez la planéte</Text>
+                  <Text style={styles.titlelow}>Achetez des meilleurs Deals à prix trés réduits</Text>
+                  <Text style={styles.titlelow}>grâce a notre application </Text>
+              </View>
+            
 
 <View>
-<Button style={styles.connectbtn} mode='outlined' onPress={() => this.controle()}>
+<Button style={styles.connectbtn} mode='outlined' onPress={()=>{this.test()}}>
     <Text style={styles.btntext}>Se connecter</Text>
   </Button>
 </View>
@@ -190,7 +159,8 @@ const styles = StyleSheet.create({
         backgroundColor: "#2dbe36" ,
         justifyContent:"center",
         alignContent:"center",
-        borderRadius:5  
+        borderRadius:5  ,
+        marginTop:wp('7%'), 
     },
       btntext:{
         fontSize: 16,
@@ -237,7 +207,19 @@ const styles = StyleSheet.create({
       logoStyle:{
         height: hp('15%'), // 70% of height device screen
         width: wp('70%'), 
-      }
-
-      
+      },
+      title:{
+          fontWeight:"bold",
+          marginVertical:4,
+          textAlign:"center",
+          fontSize:20,
+      },
+      titlelow:{
+        fontWeight:"normal",
+        marginVertical:4,
+        textAlign:"center",
+        fontSize:15,
+        fontStyle:"italic",
+    
+    }
   });

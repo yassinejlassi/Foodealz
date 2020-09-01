@@ -92,8 +92,9 @@ onPressButton() {
  
   render() {
     return (
+<ScrollView>
       <View style={styles.MainContainer}> 
-       <ScrollView >
+      
 
       <ImageBackground source={require('../Images/groupe_549.png')} style={styles.image}>
       <Image
@@ -101,11 +102,11 @@ onPressButton() {
          source={require('../Images/logo.png')}
         
          style={styles.logoStyle}
-        
        />
-     <View style={styles.form} >
-       
-  
+
+     
+
+   <View style={styles.form}>
 
 <TextInput  
                     style={styles.TextInput}  
@@ -151,47 +152,30 @@ onPressButton() {
                     secureTextEntry={true}
                     onChangeText={(repassword) => this.setState({repassword})}  
                 />  
-               
-     </View>
-
+              
+     
+              </View>
+              
      <View>
-       <Link to="/verif">
+     
 <Button style={styles.connectbtn} mode='outlined' onPress={() => this.AddUser()}>
     <Text style={styles.btntext}>S'inscrire gratuitement</Text>
     
   </Button>
-  </Link>
+
+  
+ 
 </View>
 
-<View style={styles.seperator}><Text style={styles.text}> Ou Bien</Text></View>
-<View style={styles.ConnectButtons}>
-            <TouchableOpacity style={styles.FacebookStyle} activeOpacity={0.5}   onPress={() => {this._facebookLogin()}}>
-              <Image
-                //We are showing the Image from online
-                source={require('../Images/groupe_545.png')}
-               
-                style={styles.ImageIconStyle}
-               
-              />
-              
 
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.GooglePlusStyle} activeOpacity={0.5} onPress={() => {this._googleLogin()}}>
-              <Image 
-                //We are showing the Image from online
-                source={require('../Images/groupe_544.jpg')}
-                
-                style={styles.ImageIconStyle}
-              />
-              <View style={styles.SeparatorLine} />
-              
-            </TouchableOpacity>
-            </View>
-            <View style={styles.seperator}><Text style={styles.text}>Vous avez deja un compte ? </Text><Link to="/"><Text style={styles.Textblue}>Connectez-vous!</Text></Link></View>
 
-     
+           
+            <View style={styles.seperator}><Text style={styles.text}>Vous avez deja un compte ? </Text><Link to="/signup"><Text style={styles.Textblue}>Connectez-vous!</Text></Link></View>
+
+           
      </ImageBackground>
-     </ScrollView></View>
+     
+     </View></ScrollView>
  )
 }
 }
@@ -204,13 +188,14 @@ const styles = StyleSheet.create({
     
     height: hp('100%'), // 70% of height device screen
     width: wp('100%'), 
-    color:'#fff'
+    color:'#fff',
   },
  
   ImageIconStyle:{
     height: hp('7%'), // 70% of height device screen
     width: wp('34%'), 
     borderRadius:10,
+    marginTop:hp('4%')
             
     }, 
     ConnectButtons:{
@@ -275,10 +260,11 @@ const styles = StyleSheet.create({
 
     },
     image: {
-      height: hp('120%'), // 70% of height device screen
+      height: hp('125%'), // 70% of height device screen
    width: wp('100%'),   // 80% of width device screen
        justifyContent: "center",
        alignItems: "center",
+       
        
       
     },
